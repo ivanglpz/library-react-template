@@ -2,11 +2,11 @@
 
 # Crea y Publica una Librería con React en npm
 
-Este articulo te explicara todo acerca de la instalacion, configuracion y publicacion de una libreria con react y typescript. Voy a usar el empaquetador Rollup con typescript. Espero y te sirva!
+Este artículo te explicará todo acerca de la instalación, configuración y publicación de una librería con React y TypeScript. Voy a usar el empaquetador Rollup con TypeScript. ¡Espero que te sea útil!
 
-## Instalacion
+## Instalación
 
-En este caso usare Nextjs v13. Pero puedes utilizar vite o astro, Solamente lo usaremos para desarrollar nuestros componentes, hooks, utils... etc.
+En este caso, usaré Next.js v13, pero también puedes utilizar Vite o Astro. Solo lo usaremos para desarrollar nuestros componentes, hooks, utilidades, etc.
 
 Enlace: https://nextjs.org/docs/getting-started/installation
 
@@ -26,7 +26,7 @@ Would you like to customize the import alias (`@/*` by default)? Yes
 What import alias would you like configured? @/\*
 ```
 
-Luego debes instalar este paquete de forma global en tu computadora. NP es un paquete que permite automatizar todo el proceso de publicacion de una libreria. Por Ejemplo reinstala las dependencias, Ejecuta los tests, Aumenta la version del package.json , crea una etiqueta de la version en git y publica la version en npm.
+Luego, debes instalar este paquete de forma global en tu computadora. np es un paquete que permite automatizar todo el proceso de publicación de una librería. Por ejemplo, reinstala las dependencias, ejecuta los tests, aumenta la versión del package.json, crea una etiqueta de la versión en Git y publica la versión en npm.
 
 Enlace: https://www.npmjs.com/package/np
 
@@ -34,7 +34,7 @@ Enlace: https://www.npmjs.com/package/np
 npm install --global np
 ```
 
-luego debes instalar las siguientes librerias como devDependencies.
+Luego, debes instalar las siguientes librerías como devDependencies.
 
 ```json
 {
@@ -85,12 +85,12 @@ global: Esta librería define un objeto global para entornos que no lo tienen, l
 
 rollup: Es el empaquetador principal para crear el bundle del proyecto. Rollup toma tus módulos y los combina en un solo archivo, optimizando el código en el proceso.
 
-El resto de librerias son complementos de las librerias principales, esto sirve al momento de hacer un build.
+El resto de las librerías son complementos de las librerías principales. Esto es útil al momento de hacer un build.
 
-## Configuracion
+## Configuración
 
 1. package.json
-   Tienes que configurar los siguientes campos, esto permitira indicarle a npm que carpeta con que archivos y el nombre que llevara la libreria, los comandos.
+   package.json Tienes que configurar los siguientes campos. Esto permitirá indicarle a npm qué carpeta usar, qué archivos incluir y el nombre que llevará la librería, así como los comandos.
 
 ```json
 {
@@ -122,18 +122,18 @@ El resto de librerias son complementos de las librerias principales, esto sirve 
 }
 ```
 
-El campo name es el nombre que aparecera en npm luego de subirlo, Pero tienes que colocar el nombre de la cuenta que esta publicando seguido del nombre del paquete @mynamenpm/module
+El campo name es el nombre que aparecerá en npm después de subirlo. Debes colocar el nombre de la cuenta que está publicando, seguido del nombre del paquete: @[mynamenpm]/module.
 
 Los scripts importantes son:
 
-Rollup: Crea el codigo final que se enviara a npm.
+Rollup: Crea el código final que se enviará a npm.
 
-publish_np: Permite ejecutar np listo para publicar a npm.
+publish_np: Permite ejecutar np listo para publicar en npm.
 
-test: Np necesita un script para saber si el codigo funciona, en este caso le puse el mismo script de rollup -c
+test: np necesita un script para verificar si el código funciona. En este caso, he utilizado el mismo script de Rollup: -c.
 
 2. rollup.config.js
-   Al ejecutar el script test o rollup necesitas este archivo de configuracion en la carpeta raiz de tu proyecto, afuera de src.
+   Al ejecutar el script test o rollup, necesitas este archivo de configuración en la carpeta raíz de tu proyecto, fuera de la carpeta src.
 
 ```javascript
 rollup.config.js;
@@ -172,10 +172,10 @@ const config = [
 export default config;
 ```
 
-Este script lo que dice, es que rollup tomara como punto de entrada index.ts, y el punto de salida sera en build. Y los plugins permiten expotar los types, json, los alias y dependencias externas que utilicemos en nuestros modulos y estaran disponibles en el paquete final.
+Este script indica que Rollup tomará index.ts como punto de entrada, y el punto de salida será en la carpeta build. Los plugins permiten exportar los tipos, archivos JSON, alias, y las dependencias externas que utilicemos en nuestros módulos, y estarán disponibles en el paquete final.
 
 tsconfig-rollup.json
-Crea un archivo json y nombralo "tsconfig-rollup.json". Este json, toma la configuracion de tsconfig y la extiende con opciones de jsx, en este caso para react.
+Crea un archivo JSON y nomínalo tsconfig-rollup.json. Este archivo toma la configuración de tsconfig y la extiende con opciones de JSX, en este caso para React.
 
 ```json
 {
@@ -187,7 +187,7 @@ Crea un archivo json y nombralo "tsconfig-rollup.json". Este json, toma la confi
 ```
 
 2. tsconfig.json
-   esta configuracion de typescript permite indicar cual es lugar donde nuestros types se guardan luego del build de rollup. en este caso en el mismo "build".
+   Esta configuración de TypeScript permite indicar dónde se guardarán nuestros tipos después del build de Rollup. En este caso, se guardarán en la misma carpeta build.
 
 ```json
 {
@@ -221,7 +221,7 @@ Crea un archivo json y nombralo "tsconfig-rollup.json". Este json, toma la confi
 ```
 
 3. .np-config.js
-   Este archivo unicamente indica de que forma se ejecutaran las reinstalaciones, los test.
+   Este archivo indica únicamente cómo se ejecutarán las reinstalaciones y los tests.
 
 ```javascript
 module.exports = {
@@ -233,13 +233,13 @@ module.exports = {
 };
 ```
 
-Estos son todas las propiedades que puede utilizar np. Revisa cual se adapta mejor a tus requisitos.
+Estas son todas las propiedades que puede utilizar np. Revisa cuál se adapta mejor a tus requisitos.
 
 ![alt text](https://res.cloudinary.com/whil/image/upload/v1725205484/app/library-template/images/image_bsfzcq.png)
 
-## Creacion del modulo.
+## Creación del módulo
 
-Crea un archivo index.ts, este sera el punto de entrada de rollup para compilar el modulo.
+Crea un archivo index.ts. Este será el punto de entrada de Rollup para compilar el módulo.
 
 ```javascript
 index.ts;
@@ -248,7 +248,7 @@ export * from "./src/@atoms";
 export * from "./src/@hooks";
 ```
 
-Para este ejemplo voy a usar atomic design y voy a crear un boton y un hook. usare el barrel pattern de typescript. lo que permite es que en el futuro si agrego mas componentes o hooks puedo simplemente agregarlo al archivo de @hooks o @atoms.
+Para este ejemplo, voy a usar Atomic Design y voy a crear un botón y un hook. Utilizaré el Barrel Pattern de TypeScript, que permite que, en el futuro, si agrego más componentes o hooks, pueda simplemente añadirlos al archivo de @hooks o @atoms.
 
 ```javascript
 root/
@@ -264,7 +264,7 @@ root/
 └── pages/
 ```
 
-Y este sera mi componente, un simple button con hello world
+Y este será mi componente: un simple botón con "Hello World".
 
 ```javascript
 export const AtomButton = () => {
@@ -272,13 +272,13 @@ export const AtomButton = () => {
 };
 ```
 
-y lo importo en @atoms => index.ts
+Y lo importo en @atoms/index.ts.
 
 ```javascript
 export { AtomButton } from "./AtomButton";
 ```
 
-y mi hook sera un useDebounce
+Y mi hook será useDebounce.
 
 ```javascript
 import { useEffect, useState } from "react";
@@ -322,54 +322,62 @@ export const useDebounce = (props: Props) => {
 };
 ```
 
-y lo importo en @hooks => index.ts
+Y lo importo en @hooks/index.ts.
 
 ```javascript
 export { useTimer } from "./useTimer";
 ```
 
+¡Listo! Ahora, sube los cambios a tu repositorio.
+
 ## Publicar en npm
 
-Dirigete a la pagina de npm, en la seccion de access tokens https://www.npmjs.com/settings/test/tokens y debes crear un nuevo token de tipo classic token.
+Dirígete a la página de npm, en la sección de Access Tokens: https://www.npmjs.com/settings/test/tokens, y crea un nuevo token de tipo Classic Token.
 
 ![alt text](https://res.cloudinary.com/whil/image/upload/v1725205484/app/library-template/images/image-1_vcjzed.png)
 
-Este nuevo token debe ser de tipo publish. para que pueda publicar paquetes. tambien te pedira 2FA activado.
+Este nuevo token debe ser de tipo "Publish" para que puedas publicar paquetes. También te pedirá que tengas habilitada la autenticación de dos factores (2FA).
 
 ![alt text](https://res.cloudinary.com/whil/image/upload/v1725205485/app/library-template/images/image-2_at2f4t.png)
 
-Luego este token nuevo debes copiarlo y crearas un archivo .npmrc
+Luego, copia este nuevo token y crea un archivo .npmrc.
 
 ![alt text](https://res.cloudinary.com/whil/image/upload/v1725205484/app/library-template/images/image-3_cljw0e.png)
 
-Este archivo .npmrc debe estar en la carpeta principal. en este caso en windows es en
+Este archivo .npmrc debe estar en la carpeta principal de tu proyecto. En Windows, la ruta es:
 
-C:\Users\yourusername/.npmrc
+C:\Users\<TuUsuario>\.npmrc
 
 ```json
 registry=https://registry.npmjs.org/
 //registry.npmjs.org/:_authToken=TU TOKEN DE NPM SIN COMILLAS TODO JUNTO
 ```
 
-este archivo lo usara np para hacer la publicacion del paquete.
+Este archivo lo usará np para realizar la publicación del paquete.
 
-### 2. Compilar
+### Compilar
 
-Tienes que ejecutar el script rollup y debe mostrarte un mensaje como este. Debes tener todos tus cambios subidos a tu repositorio.
+Debes ejecutar el script Rollup, y debería mostrarte un mensaje como este. Asegúrate de tener todos tus cambios subidos a tu repositorio.
 ![alt text](https://res.cloudinary.com/whil/image/upload/v1725205484/app/library-template/images/image-4_dy238k.png)
 
-Ahora ejecuta el script publish_np. este script al princpio preguntara si todos los archivos que te enlistara seran incluidos. Aceptas que si. y
+Ahora, ejecuta el script publish_np. Este script, al principio, te preguntará si todos los archivos que te enlistará serán incluidos. Acepta que sí.
 
 ![alt text](https://res.cloudinary.com/whil/image/upload/v1725205485/app/library-template/images/image-5_w757zx.png)
 
-Luego de indicara que tipo de version es, puede ser patch, minor, major, prepatch. En mi caso es un patch. Si no conoces que tipo de version debes utilizar te recomiendo leer este documento que lo explica mas a detalle. https://semver.org/#semantic-versioning-specification-semver
+Luego, te pedirá que indiques qué tipo de versión es: puede ser patch, minor, major o prepatch. En mi caso, es un patch. Si no estás seguro de qué tipo de versión debes utilizar, te recomiendo leer este documento que lo explica con más detalle: https://semver.org/#semantic-versioning-specification-semver.
 
 ![alt text](https://res.cloudinary.com/whil/image/upload/v1725205484/app/library-template/images/image-6_wheche.png)
 
-Aqui debes colocar el codigo de autenticacion 2FA que posee tu cuenta. esto es requerido por parte de npm
+Aquí debes ingresar el código de autenticación de dos factores (2FA) que posee tu cuenta. Esto es requerido por npm.
 
 ![alt text](https://res.cloudinary.com/whil/image/upload/v1725205488/app/library-template/images/image-7_ytygl8.png)
 
-Y listo. El paquete ya se encuentra en npm y puedes utilizarlo en cualquier proyecto.
+¡Y listo! El paquete ya está en npm y puedes utilizarlo en cualquier proyecto.
 
 ![alt text](https://res.cloudinary.com/whil/image/upload/v1725205490/app/library-template/images/image-8_yp9xx1.png)
+
+¡Gracias por leer!
+
+Espero que esta guía te haya sido de gran ayuda. Ha sido un articulo extenso y detallado, y me encantaría que más personas pudieran beneficiarse de esta información. Si te ha gustado, te invito a compartirlo y a darle un "me gusta". ¡Tu apoyo es invaluable y me motiva a seguir creando contenido de calidad!
+
+ツ
