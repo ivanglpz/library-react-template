@@ -6,7 +6,7 @@ type Props = {
   end?: number;
 };
 
-const useTimer = (props: Props) => {
+export const useTimer = (props: Props) => {
   const { callback, ms, end } = props;
   const [timer, setTimer] = useState(3);
 
@@ -37,5 +37,3 @@ const useTimer = (props: Props) => {
     setLoad,
   };
 };
-
-export default useTimer;
