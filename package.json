@@ -49,7 +49,7 @@
     "start": "next start -p 3001",
     "test": "rollup -c",
     "build": "next build",
-    "publish": "np --no-cleanup"
+    "publish_np": "np --no-cleanup"
   },
   "types": "./build\\index.d.ts",
   "version": "0.0.1"
