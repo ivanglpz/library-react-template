@@ -47,7 +47,7 @@
     "dev": "next dev",
     "lint": "next lint",
     "start": "next start -p 3001",
-    "test": "pnpm build",
+    "test": "rollup -c",
     "build": "next build",
     "publish": "np --no-cleanup"
   },
