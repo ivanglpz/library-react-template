@@ -1,4 +1,4 @@
-![alt text](publishlibrary.png)
+![alt text](https://res.cloudinary.com/whil/image/upload/v1725205735/app/library-template/images/publishlibrary_r15d1h.png)
 
 # Crea y Publica una Librería con React en npm
 
@@ -10,7 +10,9 @@ En este caso usare Nextjs v13. Pero puedes utilizar vite o astro, Solamente lo u
 
 Enlace: https://nextjs.org/docs/getting-started/installation
 
-## npx create-next-app@latest
+```
+npx create-next-app@latest
+```
 
 ```javascript
 What is your project named? my-app
@@ -233,7 +235,7 @@ module.exports = {
 
 Estos son todas las propiedades que puede utilizar np. Revisa cual se adapta mejor a tus requisitos.
 
-![alt text](image.png)
+![alt text](https://res.cloudinary.com/whil/image/upload/v1725205484/app/library-template/images/image_bsfzcq.png)
 
 ## Creacion del modulo.
 
@@ -330,15 +332,15 @@ export { useTimer } from "./useTimer";
 
 Dirigete a la pagina de npm, en la seccion de access tokens https://www.npmjs.com/settings/test/tokens y debes crear un nuevo token de tipo classic token.
 
-![alt text](image-1.png)
+![alt text](https://res.cloudinary.com/whil/image/upload/v1725205484/app/library-template/images/image-1_vcjzed.png)
 
 Este nuevo token debe ser de tipo publish. para que pueda publicar paquetes. tambien te pedira 2FA activado.
 
-![alt text](image-2.png)
+![alt text](https://res.cloudinary.com/whil/image/upload/v1725205485/app/library-template/images/image-2_at2f4t.png)
 
 Luego este token nuevo debes copiarlo y crearas un archivo .npmrc
 
-![alt text](image-3.png)
+![alt text](https://res.cloudinary.com/whil/image/upload/v1725205484/app/library-template/images/image-3_cljw0e.png)
 
 Este archivo .npmrc debe estar en la carpeta principal. en este caso en windows es en
 
@@ -354,20 +356,20 @@ este archivo lo usara np para hacer la publicacion del paquete.
 ### 2. Compilar
 
 Tienes que ejecutar el script rollup y debe mostrarte un mensaje como este. Debes tener todos tus cambios subidos a tu repositorio.
-![alt text](image-4.png)
+![alt text](https://res.cloudinary.com/whil/image/upload/v1725205484/app/library-template/images/image-4_dy238k.png)
 
 Ahora ejecuta el script publish_np. este script al princpio preguntara si todos los archivos que te enlistara seran incluidos. Aceptas que si. y
 
-![alt text](image-5.png)
+![alt text](https://res.cloudinary.com/whil/image/upload/v1725205485/app/library-template/images/image-5_w757zx.png)
 
 Luego de indicara que tipo de version es, puede ser patch, minor, major, prepatch. En mi caso es un patch. Si no conoces que tipo de version debes utilizar te recomiendo leer este documento que lo explica mas a detalle. https://semver.org/#semantic-versioning-specification-semver
 
-![alt text](image-6.png)
+![alt text](https://res.cloudinary.com/whil/image/upload/v1725205484/app/library-template/images/image-6_wheche.png)
 
 Aqui debes colocar el codigo de autenticacion 2FA que posee tu cuenta. esto es requerido por parte de npm
 
-![alt text](image-7.png)
+![alt text](https://res.cloudinary.com/whil/image/upload/v1725205488/app/library-template/images/image-7_ytygl8.png)
 
 Y listo. El paquete ya se encuentra en npm y puedes utilizarlo en cualquier proyecto.
 
-![alt text](image-8.png)
+![alt text](https://res.cloudinary.com/whil/image/upload/v1725205490/app/library-template/images/image-8_yp9xx1.png)
