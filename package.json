@@ -35,7 +35,7 @@
   ],
   "license": "UNLICENSED",
   "main": "build/index.js",
-  "name": "@ivanglpz/library-template",
+  "name": "@whil/library-template",
   "description": "A template for creating libraries with react by @ivanglpz",
   "peerDependencies": {},
   "publishConfig": {
